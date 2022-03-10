@@ -1,0 +1,659 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1, 2, 3, 3, 2, 1])"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x = np.array([1, 2, 3])\n",
+    "y = np.array([3, 2, 1])\n",
+    "np.concatenate([x, y])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[ 1  2  3  3  2  1 99 99 99]\n"
+     ]
+    }
+   ],
+   "source": [
+    "z = [99, 99, 99]\n",
+    "print(np.concatenate([x, y, z]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "grid = np.array([[1, 2, 3],\n",
+    "                 [4, 5, 6]])\n",
+    "grid1 = np.array([[1, 2, 3, 4],\n",
+    "                 [4, 5, 6, 7]])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 98,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 2, 3, 1, 2, 3, 4],\n",
+       "       [4, 5, 6, 4, 5, 6, 7]])"
+      ]
+     },
+     "execution_count": 98,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.concatenate([grid, grid1],axis=1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 2, 3, 1, 2, 3],\n",
+       "       [4, 5, 6, 4, 5, 6]])"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.concatenate([grid, grid], axis=1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[1, 2, 3],\n",
+       "       [9, 8, 7],\n",
+       "       [6, 5, 4]])"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x = np.array([1, 2, 3])\n",
+    "grid = np.array([[9, 8, 7],\n",
+    "                 [6, 5, 4]])\n",
+    "\n",
+    "# Босоо тэнхлэгт нэгтгэх\n",
+    "np.vstack([x, grid])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 9,  8,  7, 99],\n",
+       "       [ 6,  5,  4, 99]])"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# хэвтээ тэнхлэгт нэгтгэх\n",
+    "y = np.array([[99],\n",
+    "              [99]])\n",
+    "np.hstack([grid, y])\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[99, 99]\n",
+      "[1 2 3] [99 99] [3 2 1]\n"
+     ]
+    }
+   ],
+   "source": [
+    "x = [1, 2, 3, 99, 99, 3, 2, 1]\n",
+    "print(x[3:5])\n",
+    "x1, x2, x3 = np.split(x, [3, 5])\n",
+    "print(x1, x2, x3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[0 1 2 3]\n",
+      " [4 5 6 7]]\n",
+      "[[ 8  9 10 11]\n",
+      " [12 13 14 15]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "grid = np.arange(16).reshape((4, 4))\n",
+    "grid\n",
+    "upper, lower = np.vsplit(grid, [2])\n",
+    "print(upper)\n",
+    "print(lower)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 0  1]\n",
+      " [ 4  5]\n",
+      " [ 8  9]\n",
+      " [12 13]]\n",
+      "[[ 2  3]\n",
+      " [ 6  7]\n",
+      " [10 11]\n",
+      " [14 15]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "left, right = np.hsplit(grid, [2])\n",
+    "print(left)\n",
+    "print(right)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 0  1  2  3]\n",
+      " [ 4  5  6  7]\n",
+      " [ 8  9 10 11]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "y,z = np.split(grid, [3])\n",
+    "print(y)\n",
+    "# print(z)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([2, 1, 0, 1, 2])"
+      ]
+     },
+     "execution_count": 46,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x = np.array([-2, -1, 0, 1, 2])\n",
+    "abs(x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([2, 1, 0, 1, 2])"
+      ]
+     },
+     "execution_count": 47,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.absolute(x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([2, 1, 0, 1, 2])"
+      ]
+     },
+     "execution_count": 48,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.abs(x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "theta = np.linspace(6, np.pi, 1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "theta      =  [6.]\n",
+      "sin(theta) =  [-0.2794155]\n",
+      "cos(theta) =  [0.96017029]\n",
+      "tan(theta) =  [-0.29100619]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"theta      = \", theta)\n",
+    "print(\"sin(theta) = \", np.sin(theta))\n",
+    "print(\"cos(theta) = \", np.cos(theta))\n",
+    "print(\"tan(theta) = \", np.tan(theta))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 76,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "21.2 ms ± 310 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)\n",
+      "66.6 µs ± 374 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)\n"
+     ]
+    }
+   ],
+   "source": [
+    "big_array = np.random.rand(100000)\n",
+    "big_array\n",
+    "%timeit sum(big_array)\n",
+    "%timeit np.sum(big_array)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 70,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.4\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(0.1 + 0.3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 74,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[0.97939066 0.93890668 0.04146053 0.28861647]\n",
+      " [0.05208428 0.97392974 0.04380274 0.58967847]\n",
+      " [0.1424031  0.78490566 0.28961728 0.57006044]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "M = np.random.random((3, 4))\n",
+    "print(M)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 78,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "5.6948560305109925\n",
+      "5.6948560305109925\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(M.sum())\n",
+    "print(np.sum(M))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 80,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1.17387804 2.69774207 0.37488054 1.44835538]\n",
+      "[2.24837434 1.65949522 1.78698647]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Баганын дагуу нэмэх\n",
+    "print(M.sum(axis = 0))\n",
+    "#Мөрийн дагуу нэмэх\n",
+    "print(M.sum(axis = 1))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 81,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.041460526916960005 0.9793906624803055\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(M.min(), M.max())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 83,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0.04146053, 0.04380274, 0.1424031 ])"
+      ]
+     },
+     "execution_count": 83,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "M.min(axis=1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 84,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "X = np.random.random((10, 3))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 85,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[0.26457742, 0.86256469, 0.1917292 ],\n",
+       "       [0.34457951, 0.58650855, 0.24047892],\n",
+       "       [0.08500472, 0.6903658 , 0.25815009],\n",
+       "       [0.01516242, 0.85667076, 0.49264295],\n",
+       "       [0.58886889, 0.33955113, 0.13825822],\n",
+       "       [0.70410472, 0.86118448, 0.57311034],\n",
+       "       [0.69349839, 0.272611  , 0.84063389],\n",
+       "       [0.63804349, 0.98646363, 0.35070635],\n",
+       "       [0.22730882, 0.84613543, 0.96448029],\n",
+       "       [0.11551328, 0.25919541, 0.94780985]])"
+      ]
+     },
+     "execution_count": 85,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "X"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 86,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Xmean = X.mean(0)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 93,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[51 92 14 71 60 20 82 86 74 74]\n"
+     ]
+    }
+   ],
+   "source": [
+    "rand = np.random.RandomState(42)\n",
+    "x = rand.randint(100, size=10)\n",
+    "print(x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 94,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[71, 86, 14]"
+      ]
+     },
+     "execution_count": 94,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "[x[3], x[7], x[2]]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 95,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([71, 86, 60])"
+      ]
+     },
+     "execution_count": 95,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ind = [3, 7, 4]\n",
+    "x[ind]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 96,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[ 0,  1,  2,  3],\n",
+       "       [ 4,  5,  6,  7],\n",
+       "       [ 8,  9, 10, 11]])"
+      ]
+     },
+     "execution_count": 96,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "X = np.arange(12).reshape((3, 4))\n",
+    "X"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 97,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ 2,  5, 11])"
+      ]
+     },
+     "execution_count": 97,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "row = np.array([0, 1, 2])\n",
+    "col = np.array([2, 1, 3])\n",
+    "X[row, col]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
